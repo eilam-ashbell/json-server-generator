@@ -12,7 +12,7 @@ This module relies on `JSON-server` & `Faker-js`.
 Clone JSON server generator
 
 ```bash
-git clone https://-------
+git clone https://github.com/eilam-ashbell/json-server-generator.git
 ```
 
 Install json-server
