@@ -80,7 +80,7 @@ export class student {
 
 Now we'll receive only 5 instances for this current schema.
 
-```json
+```js
 {
     students: [
         {"fName":"John"},
@@ -109,7 +109,7 @@ export class student {
 
 Now, every instance that will be generate will have a key of `id` and running number (from 0 to 4 in this case) as value. The result will be like:
 
-```json
+```js
 {
     students: [
         {"fName":"John", "id"=0},
