@@ -123,6 +123,8 @@ Now, every instance that will be generate will have a key of `id` and running nu
 
 If you want to disable this option again you can just remove the `amount` property or define it to `false`.
 
+You can also define your own id as `number` or `string` identifier as every other field in the schema.
+
 ### Keep in mind
 
 * You can fill `schemas.ts` in schemas as much as you need.
