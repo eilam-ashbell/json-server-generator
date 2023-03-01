@@ -1,6 +1,4 @@
 import { faker } from '@faker-js/faker';
-import generate from './modules/generators';
-import length from './modules/generators/length';
  
 // data schema for example:
 export class student {

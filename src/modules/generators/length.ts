@@ -7,15 +7,15 @@ import selectFromArray from "../utils/select-from-array";
 function units(unit?: "metric" | "feet", abbreviation?: boolean): string {
     if (unit === "feet") {
         if (abbreviation) {
-            return selectFromArray(feetLength.abbr)[0];
+            return selectFromArray(feetLength.abbr);
         } else {
-            return selectFromArray(feetLength.wide)[0];
+            return selectFromArray(feetLength.wide);
         }
     } else {
         if (abbreviation) {
-            return selectFromArray(metricLength.abbr)[0];
+            return selectFromArray(metricLength.abbr);
         } else {
-            return selectFromArray(metricLength.wide)[0];
+            return selectFromArray(metricLength.wide);
         }
     }
 }
@@ -32,15 +32,15 @@ function length(
     const randNum = Math.floor(Math.random() * maxNum) + minNum;
     if (!unit) {
         if (abbreviation) {
-            return `${randNum} ${selectFromArray(metricLength.abbr)[0]}`;
+            return `${randNum} ${selectFromArray(metricLength.abbr)}`;
         } else {
-            return `${randNum} ${selectFromArray(metricLength.wide)[0]}`;
+            return `${randNum} ${selectFromArray(metricLength.wide)}`;
         }
     } else if (unit === "feet") {
         if (abbreviation) {
-            return `${randNum} ${selectFromArray(feetLength.abbr)[0]}`;
+            return `${randNum} ${selectFromArray(feetLength.abbr)}`;
         } else {
-            const feetUnit = selectFromArray(feetLength.wide)[0];
+            const feetUnit = selectFromArray(feetLength.wide);
             if (feetUnit === "feet" && randNum === 1) {
                 return `${randNum} foot`;
             } else {

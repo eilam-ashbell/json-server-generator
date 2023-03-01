@@ -1,9 +1,11 @@
-import birthday from "./birthday";
+import animals from "./animals";
+import { birthday } from "./birthday";
 import length from "./length";
 
 class Generate {
-    length = length
-    birthday = birthday
+    public "length" = length
+    public "birthday" = birthday
+    public "animals" = animals
 }
 
 const generate = new Generate()

@@ -1,6 +1,9 @@
 import { error } from "console";
 
-function birthday(age?: number, locale: Intl.LocalesArgument = "en-EN"): string {
+function birthday(
+    age?: number,
+    locale: Intl.LocalesArgument = "en-EN"
+): string {
     if (age <= 0) throw error("age must be over 0");
     if (!age) {
         const maxDate = Date.now();
@@ -24,4 +27,6 @@ function birthday(age?: number, locale: Intl.LocalesArgument = "en-EN"): string 
     }
 }
 
-export default birthday;
+export { 
+    birthday, 
+};
