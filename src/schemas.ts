@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import generate from './modules/generators';
  
 // data schema for example:
 export class student {
@@ -6,8 +7,9 @@ export class student {
     static "defaultId" = true
     constructor() {
         this["gender"] = faker.name.sex()
-        this["fName"] = faker.name.firstName(this["gender"])
-        this["lName"] = faker.name.lastName()
+        this["fName"] = generate.name.firstName("male")
+        this["lName"] = generate.name.lastName()
+        this["fullName"] = generate.name.fullName("male")
         this["age"] = faker.random.numeric(2)
         this["image"] = faker.image.avatar()
         this["phone"] = faker.phone.number('+972-5########')
