@@ -12,7 +12,7 @@ export class student {
         this["fullName"] = generate.name.fullName("male")
         this["age"] = faker.random.numeric(2)
         this["image"] = faker.image.avatar()
-        this["phone"] = faker.phone.number('+972-5########')
+        this["phone"] = generate.phone.countryCode()
         this["email"] = faker.internet.email(this["fName"], this["lName"])
     }
 };
