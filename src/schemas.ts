@@ -9,9 +9,10 @@ export class student {
         this["gender"] = generate.person.gender()
         this["fName"] = generate.person.firstName()
         this["lName"] = generate.person.lastName()
-        this["age"] = generate.random.number()
+        this["age"] = generate.random.number(10, 100)
         this["image"] = faker.image.avatar()
         this["phone"] = generate.phone.number(generate.phone.countryCode() + "-###-###-####")
         this["email"] = faker.internet.email(this["fName"], this["lName"])
+        this["string"] = generate.random.stringFromPattern("AbC##-##", {numeric: true})
     }
 };

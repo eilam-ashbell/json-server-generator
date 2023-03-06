@@ -1,5 +1,8 @@
 import { error } from "console";
 
+// Generates birthday date.
+// User can provide an age to generate the date according it
+// Also can define date format
 function birthday(
     age?: number,
     locale: Intl.LocalesArgument = "en-EN"

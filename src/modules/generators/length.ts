@@ -4,6 +4,7 @@ import metricLength from "../providers/lengthUnit/metric-unit";
 import selectFromArray from "../utils/select-from-array";
 
 // Generate length unit - metric or feet.
+// User can decide to generate the full unit name or abbreviation
 function units(unit?: "metric" | "feet", abbreviation?: boolean): string {
     if (unit === "feet") {
         if (abbreviation) {
@@ -20,7 +21,9 @@ function units(unit?: "metric" | "feet", abbreviation?: boolean): string {
     }
 }
 
-// Generate length with unit
+// Generate length (number) with unit
+// User can decide to generate the full unit name or abbreviation
+// Also can manage min & max number to the length generate
 function length(
     unit?: "metric" | "feet",
     abbreviation: boolean = false,
