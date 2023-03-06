@@ -3,7 +3,7 @@ import ICountryCodes, { countryCodesArr } from "../providers/phone/country-codes
 import randomDigit from "../utils/random-digit"
 import selectFromArray from "../utils/select-from-array"
 
-function pattern(pattern: string): string {
+function patternExchange(pattern: string): string {
     const patternArr = pattern.split('')
     patternArr.forEach( (char, i) => {
         if (char === "#") {
@@ -14,7 +14,7 @@ function pattern(pattern: string): string {
 }
 
 function number(pattern?: string): string {
-    if (pattern) return this.pattern(pattern);
+    if (pattern) return patternExchange(pattern);
     const defaultPattern = "###-###-####"
     return this.pattern(defaultPattern)
 }

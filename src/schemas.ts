@@ -6,13 +6,12 @@ export class student {
     static "amount" = 5;
     static "defaultId" = true
     constructor() {
-        this["gender"] = faker.name.sex()
-        this["fName"] = generate.name.firstName("male")
-        this["lName"] = generate.name.lastName()
-        this["fullName"] = generate.name.fullName("male")
-        this["age"] = faker.random.numeric(2)
+        this["gender"] = generate.person.gender()
+        this["fName"] = generate.person.firstName()
+        this["lName"] = generate.person.lastName()
+        this["age"] = generate.random.number()
         this["image"] = faker.image.avatar()
-        this["phone"] = generate.phone.countryCode()
+        this["phone"] = generate.phone.number(generate.phone.countryCode() + "-###-###-####")
         this["email"] = faker.internet.email(this["fName"], this["lName"])
     }
 };

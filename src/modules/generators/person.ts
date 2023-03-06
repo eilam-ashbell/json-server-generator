@@ -1,6 +1,7 @@
-import namesFemale from "../providers/names/names-female";
-import namesLast from "../providers/names/names-last";
-import namesMale from "../providers/names/names-male";
+import namesFemale from "../providers/person/names-female";
+import namesLast from "../providers/person/names-last";
+import namesMale from "../providers/person/names-male";
+import genders from "../providers/person/genders";
 import selectFromArray from "../utils/select-from-array";
 
 function firstName(gender?: "male" | "female"): string {
@@ -24,8 +25,19 @@ function fullName(gender?: "male" | "female"): string {
     return `${firstName} ${lastName}`
 }
 
+function gender(): "male" | "female" {
+    return selectFromArray(["male", "female"])
+}
+
+function inclusiveGender(): string {
+    let genderList = [...genders.conservative, ...genders.inclusive]
+    return selectFromArray(genderList)
+}
+
 export default {
     firstName,
     lastName,
-    fullName
+    fullName,
+    gender,
+    inclusiveGender,
 }
