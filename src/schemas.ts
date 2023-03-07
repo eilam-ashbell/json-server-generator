@@ -13,6 +13,5 @@ export class student {
         this["image"] = faker.image.avatar()
         this["phone"] = generate.phone.number(generate.phone.countryCode() + "-###-###-####")
         this["email"] = faker.internet.email(this["fName"], this["lName"])
-        this["string"] = generate.random.stringFromPattern("AbC##-##", {numeric: true})
     }
 };

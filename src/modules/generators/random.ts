@@ -9,7 +9,6 @@ function number(min: number = 0, max: number = 1000, padding?: {digit: number, a
     randNumber = Math.round(randNumber)
     if (padding?.digit) {
         randNumber = +randNumber.toString().padStart((padding.amount ? padding.amount : max.toString().length), padding?.digit.toString())
-        console.log(randNumber);
     }
     return randNumber;
 }
@@ -43,44 +42,8 @@ function character(
     return selectFromArray(characterList);
 }
 
-// Generates a random number of characters according to user's 'length' input (by default only letters).
-// User can change characters type in options object.
-function string(
-    length: number,
-    options?: { upperCase?: boolean; lowerCase?: boolean; marks?: boolean, numeric?: boolean }
-): string {
-    const string = [];
-    for (let i = 0; i < length; i++) {
-        string.push(
-            character(options?.upperCase, options?.lowerCase, options?.marks, options?.numeric)
-        );
-    }
-    return string.join("");
-}
-
-// Generates random characters according do user's pattern (by default only letters).
-// User can change characters type in options object.
-function stringFromPattern(
-    pattern: string,
-    options?: { upperCase?: boolean; lowerCase?: boolean; marks?: boolean, numeric?: boolean }
-): string {
-    const patternArr = pattern.split("");
-    patternArr.forEach((char, i) => {
-        if (char === "#") {
-            patternArr[i] = character(
-                options?.upperCase,
-                options?.lowerCase,
-                options?.marks,
-                options?.numeric
-            );
-        }
-    });
-    return patternArr.join("");
-}
 
 export default {
     number,
     character,
-    string,
-    stringFromPattern,
 };
