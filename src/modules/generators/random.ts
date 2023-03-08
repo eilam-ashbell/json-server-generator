@@ -1,4 +1,5 @@
 import characters from "../providers/random/characters";
+import repeater from "../utils/repeater";
 import selectFromArray from "../utils/select-from-array";
 
 // Generate new number between min & max values (default 0-1000)
@@ -42,8 +43,52 @@ function character(
     return selectFromArray(characterList);
 }
 
+function string(
+    length: number,
+    options?: {
+        upperCase?: boolean;
+        lowerCase?: boolean;
+        marks?: boolean;
+        numeric?: boolean;
+    }
+): string | string[] {
+    return repeater(
+        () =>
+            character(
+                options?.upperCase,
+                options?.lowerCase,
+                options?.marks,
+                options?.numeric
+            ),
+        length,
+        { separator: "" }
+    );
+}
+
+function hexadecimalNumber(length: number = 1): string {
+    return repeater(() => selectFromArray([
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+    ]), length, {separator:""}) as string;
+}
 
 export default {
     number,
     character,
+    string,
+    hexadecimalNumber,
 };

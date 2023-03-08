@@ -1,5 +1,6 @@
 import animals from "./animals";
 import { birthday } from "./birthday";
+import color from "./color";
 import crypto from "./crypto";
 import length from "./length";
 import person from "./person"
@@ -17,6 +18,7 @@ class Generate {
     public "random" = random
     public "crypto" = crypto
     public "web" = web
+    public "color" = color
 }
 
 const generate = new Generate()
