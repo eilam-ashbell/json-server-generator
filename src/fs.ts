@@ -1,12 +1,10 @@
 import fsPromises from "fs/promises";
 
-const fileName = "mockDB.json";
-
-async function write(data: string): Promise<void> {
+async function write(fileName: string, data: string): Promise<void> {
     await fsPromises.writeFile(fileName, data);
 }
 
-async function read(): Promise<string> {
+async function read(fileName: string): Promise<string> {
     const content: string = await fsPromises.readFile(fileName, "utf-8");
     return content;
 }

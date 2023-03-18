@@ -41,10 +41,16 @@ function inclusiveGender(): string {
     return selectFromArray(genderList)
 }
 
+function avatarImage(gender: "male" | "female"): string {
+    const randNum = Math.floor(1 + Math.random() * 10)
+    return `/avatars/${gender}/${randNum}.jpg`
+}
+
 export default {
     firstName,
     lastName,
     fullName,
     gender,
     inclusiveGender,
+    avatarImage
 }

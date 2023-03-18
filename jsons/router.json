@@ -1,0 +1,6 @@
+{
+  "/test/path": "/student",
+  "/test/path/:id": "/student/:id",
+  "/classes": "/test",
+  "/classes/:id": "/test/:id"
+}
