@@ -1,3 +1,4 @@
+import { error } from "console";
 import characters from "../providers/random/characters";
 import repeater from "../utils/repeater";
 import selectFromArray from "../utils/select-from-array";
@@ -6,6 +7,8 @@ import selectFromArray from "../utils/select-from-array";
 // Option to add padding to match number of digits for all numbers
 // by default, padding is off. if turned on you can choose with which digit to pad and how much (by default as 'max' number of digits)
 function number(min: number = 0, max: number = 1000, padding?: {digit: number, amount?: number}): number {
+    if (min > max)
+        throw error("minimum number must be smaller then maximum number");
     let randNumber = min + Math.random() * (max - min);
     randNumber = Math.round(randNumber)
     if (padding?.digit) {

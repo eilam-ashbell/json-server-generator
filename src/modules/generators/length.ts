@@ -2,6 +2,7 @@ import { error } from "console";
 import feetLength from "../providers/lengthUnit/feet-unit";
 import metricLength from "../providers/lengthUnit/metric-unit";
 import selectFromArray from "../utils/select-from-array";
+import random from "./random";
 
 // Generate length unit - metric or feet.
 // User can decide to generate the full unit name or abbreviation
@@ -32,7 +33,7 @@ function length(
 ): string {
     if (minNum > maxNum)
         throw error("minimum number mast be smaller then maximum number");
-    const randNum = Math.floor(Math.random() * maxNum) + minNum;
+    const randNum = random.number(minNum, maxNum)
     if (!unit) {
         if (abbreviation) {
             return `${randNum} ${selectFromArray(metricLength.abbr)}`;

@@ -6,7 +6,8 @@ import userAgents from "../providers/web/user-agents";
 import repeater from "../utils/repeater";
 import random from "./random";
 import statusCodes from "../providers/web/status-codes";
-import colors from "../providers/web/colors";
+import emails from "../providers/web/emails";
+import generate from ".";
 
 function httpMethods(CRUD: boolean = true): string {
     if (CRUD) return selectFromArray(httpMethod.crud);
@@ -55,17 +56,47 @@ function macAddress(): string {
     }) as string;
 }
 
-function httpStatusCode(
-    option?: {group?: keyof typeof statusCodes,
-    description?: boolean}
-): string {
-    let group = option?.group
-    if (!group) group = selectFromArray(Object.keys(statusCodes))
+function httpStatusCode(option?: {
+    group?: keyof typeof statusCodes;
+    description?: boolean;
+}): string {
+    let group = option?.group;
+    if (!group) group = selectFromArray(Object.keys(statusCodes));
     if (option?.description) {
-        const code = selectFromArray(Object.keys(statusCodes[group]))        
-        return `${code} (${statusCodes[group][code]})`
+        const code = selectFromArray(Object.keys(statusCodes[group]));
+        return `${code} (${statusCodes[group][code]})`;
     }
-    return selectFromArray(Object.keys(statusCodes[group]))
+    return selectFromArray(Object.keys(statusCodes[group]));
+}
+
+function email(firstName?: string, lastName?: string): string {
+    const provider = "@" + selectFromArray(emails.domains);
+    const version = Math.floor(1 + Math.random() * 4);
+    if (version === 1) {
+        firstName ? firstName : (firstName = generate.person.firstName());
+        return (firstName + provider).toLowerCase();
+    } else if (version === 2) {
+        firstName ? firstName : (firstName = generate.person.firstName());
+        lastName ? lastName : (lastName = generate.person.lastName());
+        return (firstName + lastName + provider).toLowerCase();
+    } else if (version === 3) {
+        lastName ? lastName : (lastName = generate.person.lastName());
+        return (lastName + provider).toLowerCase();
+    } else if (version === 4) {
+        firstName ? firstName : (firstName = generate.person.firstName());
+        return (
+            firstName +
+            Math.floor(Math.random() * 100) +
+            provider
+        ).toLowerCase();
+    } else if (version === 4) {
+        lastName ? lastName : (lastName = generate.person.lastName());
+        return (
+            lastName +
+            Math.floor(Math.random() * 100) +
+            provider
+        ).toLowerCase();
+    }
 }
 
 export default {
@@ -75,4 +106,5 @@ export default {
     ipAddress,
     macAddress,
     httpStatusCode,
+    email,
 };

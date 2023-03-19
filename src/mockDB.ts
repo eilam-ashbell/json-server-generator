@@ -1,16 +1,15 @@
 import fs from "./fs";
 import * as schemas from "./schemas";
-
+const config = require("../jsons/config.json")
 class MockDB {
     // init data container
-    finalJson = {};
+    private finalJson = {};
     // init routes container
-    routerJson = {};
+    private routerJson = {};
     // generates DB data
-    mockGenerator = (
+    public mockGenerator = (
         // receive array of schemas or null
         schemasList?: { new (): any }[],
-        options?: { autoRouter?: boolean }
     ) => {
         // if schemas not received 
         if (!schemasList) {
@@ -34,7 +33,7 @@ class MockDB {
             // define a key named as schema's class name & insert an array of all created instances to it
             this.finalJson[schema.name] = data;
             // if autoRouter is enable, create auto routes
-            if (options?.autoRouter) {
+            if (config.autoRouter) {
                 if (schema?.["path"]) {
                     if (schema["path"][0] !== "/") {
                         this.routerJson[
@@ -63,14 +62,13 @@ class MockDB {
             JSON.stringify(this.finalJson, null, 2)
         );
     };
-    run = (
+    public run = (
         schemas?: { new (): any }[],
-        options?: { autoInterval?: boolean; ms?: number; autoRouter?: boolean }
     ) => {
-        if (options?.autoInterval === true) {
-            setInterval(() => this.mockGenerator(schemas, {autoRouter: options?.autoRouter}), options?.ms || 1000);
+        if (config?.intervalUpdate === true) {
+            setInterval(() => this.mockGenerator(schemas), config?.intervalMs || 1000);
         }
-        this.mockGenerator(schemas, {autoRouter: options?.autoRouter});
+        this.mockGenerator(schemas);
     };
 }
 
