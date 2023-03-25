@@ -1,6 +1,6 @@
 import fs from "./fs";
 import * as schemas from "./schemas";
-const config = require("../jsons/config.json")
+const config = require("../config.json")
 class MockDB {
     // init data container
     private finalJson = {};
@@ -51,14 +51,14 @@ class MockDB {
                 }
                 // write router.json file to set up routes
                 fs.write(
-                    "jsons/router.json",
+                    "src/jsons/router.json",
                     JSON.stringify(this.routerJson, null, 2)
                 );
             }
         }
         // save generated data to 'mockDB.json'
         fs.write(
-            "jsons/mockDB.json",
+            "src/jsons/mockDB.json",
             JSON.stringify(this.finalJson, null, 2)
         );
     };

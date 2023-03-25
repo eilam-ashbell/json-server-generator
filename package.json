@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec ts-node src/index.ts",
-    "serve": "concurrently \"ts-node src/index.ts\" \"json-server --watch jsons/mockDB.json --routes jsons/router.json --config jsons/config.json\""
+    "serve": "concurrently \"ts-node src/index.ts\" \"json-server --watch src/jsons/mockDB.json --routes src/jsons/router.json --config ./config.json\""
   },
   "keywords": [],
   "author": "",

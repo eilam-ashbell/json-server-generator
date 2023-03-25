@@ -89,9 +89,16 @@ function hexadecimalNumber(length: number = 1): string {
     ]), length, {separator:""}) as string;
 }
 
+function boolean(): boolean {
+    const randNum = number(0, 2)
+    if (randNum > 1) return true
+    return false
+}
+
 export default {
     number,
     character,
     string,
     hexadecimalNumber,
+    boolean,
 };

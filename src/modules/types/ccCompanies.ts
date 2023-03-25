@@ -1,0 +1,1 @@
+type ccCompanies = "visa" | "mastercard" | "discover" | "american express"
