@@ -8,6 +8,7 @@ import random from "./random";
 import statusCodes from "../providers/web/status-codes";
 import emails from "../providers/web/emails";
 import generate from ".";
+import { expandN } from "regex-to-strings";
 
 function httpMethods(CRUD: boolean = true): string {
     if (CRUD) return selectFromArray(httpMethod.crud);
@@ -99,6 +100,11 @@ function email(firstName?: string, lastName?: string): string {
     }
 }
 
+function regex(regex: RegExp): string {
+    const strings = expandN(regex, 1);
+    return strings[0];
+}
+
 export default {
     httpMethods,
     emoji,
@@ -107,4 +113,5 @@ export default {
     macAddress,
     httpStatusCode,
     email,
+    regex
 };

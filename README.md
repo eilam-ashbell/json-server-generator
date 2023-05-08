@@ -211,18 +211,151 @@ once the process finished you can see in your terminal all your endpoint for eac
 
 ## Data generation ✨
 
-JSG gives you built-in functionality to generate your data. As you see in last examples, you can call the `generate` function and select your desire type of data you want to generate.
+JSG gives you built-in functionality to generate your data. As shown in the last examples, you can call the `generate` function and select your desire type of data you want to generate.
 Generators are sorted in groups to helps you fined every thing easily.
 
 ### Animal
 
+#### Kind()
+
+The `kind()` function generates a random name of an animal kind from the list of animals that JSG know to generate.
+
+``` js
+// Example
+generate.animal.kind() // => 'dog'
+generate.animal.kind() // => 'cat'
+```
+
+#### animal.dog()
+
+The `dog()` function returns a random name of a dog breed.
+
+``` js
+// Example
+generate.animal.dog() // => 'Border Collie'
+generate.animal.dog() // => 'Bulldog'
+```
+
+#### animal.cat()
+
+The `cat()` function returns a random name of a cat breed.
+
+``` js
+// Example
+generate.animal.dog() // => 'Egyptian Mau'
+generate.animal.dog() // => 'Sphynx'
+```
+
 ### Color
+
+#### color.color()
+
+The `color()` function returns a string of a random color representation in hex format.
+
+``` js
+// Example
+generate.color.color() // => '#6a7fa4'
+generate.color.color() // => '#aaa96c'
+```
+
+#### color.colorName()
+
+The `colorName()` function returns a random color name string.
+
+``` js
+// Example
+generate.color.colorName() // =>'maroon'
+generate.color.colorName() // => 'orange'
+```
 
 ### Company
 
+#### company.name()
+
+The `name()` function returns a random name of a company in the US.
+
+```js
+// Example
+generate.company.name() // => 'google'
+generate.company.name() // => 'apple'
+```
+
 ### Country
 
+#### country.name()
+
+The `name()` function returns a random name of a country in the world and can return their name in 3 different formats.
+
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| type | "full" \| "alpha2" \| "alpha3" | "full" | define the format of the returned country name |
+
+``` js
+// Example
+generate.country.name({type: 'full'}) // => 'France'
+generate.country.name({type: 'alpha2'}) // => "FR"
+generate.country.name({type: 'alpha3'}) // => "FRA"
+```
+
 ### Crypto
+
+#### crypto.uuid()
+
+The `uuid()` function returns a random UUID in one of its versions.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| version | "v1" \| "v3" \| "v4" \| "v5" | "v4" | define the version of the returned UUID |
+
+``` js
+// Example
+generate.crypto.uuid({version: 'v1'}) // => '83530bae-edd8-11ed-a05b-0242ac120003'
+generate.crypto.uuid({version: 'v4'}) // => '984e448e-1205-4c0c-8477-1c658a4d6a8c'
+```
+
+#### crypto.token()
+
+The `token()` function returns a random token.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| length | number | 10 | Number of characters of the token |
+
+This function can also get an options object as argument:
+
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| upperCase | boolean | true | Enable using of upper case letters in the token |
+| lowerCase | boolean | true | Enable using of lower case letters in the token |
+| marks | boolean | false | Enable using of marks characters in the token |
+| numeric | boolean | false | Enable using of numbers in the token |
+
+```js
+// Example
+generate.crypto.token(6, {upperCase: true, marks: true}) // => 'amZuWd'
+generate.crypto.token(8, {upperCase: true, marks: true}) // => 'aB!sdFz@'
+generate.crypto.token(16, {numeric: true, marks: true}) // => '7b9f9!cf#%nK195W'
+```
+
+#### crypto.tokenByPattern()
+
+The `tokenByPattern()` function generates a token with the ability to define some constant characters inside the token.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| pattern | string | undefine | String that represent your token pattern. Use the `#` character to define a random character to generate in the pattern |
+
+This function can also get an options object as argument:
+
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| upperCase | boolean | true | Enable using of upper case letters in the token |
+| lowerCase | boolean | true | Enable using of lower case letters in the token |
+| marks | boolean | false | Enable using of marks characters in the token |
+| numeric | boolean | false | Enable using of numbers in the token |
+
+```js
+// Example  
+generate.crypto.tokenByPattern('test####') // => 'testAaBb'
+generate.crypto.tokenByPattern('te####st', {numeric: true, marks: true}) // => 'te!a3Bst'
+```
 
 ### Date
 

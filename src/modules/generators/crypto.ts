@@ -16,7 +16,7 @@ function uuid(version?: "v1" | "v3" | "v4" | "v5"): string {
 // Generates a random token at any length according to user's input (by default only letters).
 // User can change characters type in options object.
 function token(
-    length: number,
+    length: number = 10,
     options?: {
         upperCase?: boolean;
         lowerCase?: boolean;
