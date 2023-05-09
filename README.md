@@ -359,7 +359,70 @@ generate.crypto.tokenByPattern('te####st', {numeric: true, marks: true}) // => '
 
 ### Date
 
+#### date.pastDate()
+
+The `pastDate()` function generates a random date in the past and return it as a Date type.
+
+```js
+//Example
+generate.date.pastDate() // => Mon Sep 29 2021 00:00:00 GMT+0530
+```
+
+#### date.futureDate()
+
+The `futureDate()` function generates a random date in the future and return it as a Date type. You can define how far the generated date can be.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| distance | number | 1 | the number of years from now that the generated date can be |
+
+```js
+//Example
+generate.date.futureDate() // => Mon Feb 30 2024 00:00:00 GMT+0530
+generate.date.futureDate(20) // => Sun Mar 15 2041 00:00:00 GMT+0530
+```
+
+#### date.dateBetween()
+
+The `dateBetween()` function generates a random date between two dates you provide.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| from | Date \| number \| string | undefined | starting date limit |
+| till | Date \| number \| string | undefined | ending date limit |
+
+```js
+//Example
+generate.date.dateBetween(new Date(2021, 0, 1), new Date(2022, 0, 1)) // => Mon Mar 2021 00:00:00 GMT+0530
+```
+
+#### date.monthName()
+
+The `monthName()` function generates a random month name.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| format | "full" \| "abbreviation" | "full" | define the month name format |
+
+```js
+//Example
+generate.date.monthName() // => February
+generate.date.monthName("abbreviation") // => Feb 
+```
+
+#### date.birthday()
+
+The `birthday()` function generates a random birthday date according to an age and locale.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| age | number | undefined | define the age which the generated birthday date year needs to be according to. Must be positive number |
+| locale | LocalesArgument | "en-EN" | define the format of the returned date |
+
+```js
+//Example
+generate.date.birthday(29) // => 05/17/1994
+generate.date.birthday(29, "he-IL") // => 29/07/1994
+```
+
 ### finance
+
 
 ### Units
 
