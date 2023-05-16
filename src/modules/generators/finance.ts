@@ -1,6 +1,7 @@
 import finances from "../providers/finances";
 import ICurrency from "../types/ICurrency";
 import Ilocales from "../types/ILocales";
+import { ccCompanies } from "../types/ccCompanies";
 import selectFromArray from "../utils/select-from-array";
 import math from "./math";
 import person from "./person";
@@ -28,10 +29,6 @@ function creditCardBrand(): ccCompanies {
 function creditCardCVVCode(brand?: ccCompanies): number {
     if (!brand) brand = creditCardBrand()
     switch (brand) {
-        case "visa":
-        case "mastercard":
-        case "discover":
-            return Math.floor(Math.random() * 900) + 100;
         case "american express":
             return Math.floor(Math.random() * 9000) + 1000;
         default:
@@ -53,10 +50,10 @@ function creditCardNumber(brand?: ccCompanies): string {
     if (!brand) brand = creditCardBrand()
     let cardNumber = "";
     const brandPrefixes = {
-      "Visa": "4",
-      "Mastercard": "5",
-      "Discover": "6",
-      "American Express": "37",
+      "visa": "4",
+      "mastercard": "5",
+      "discover": "6",
+      "american express": "37",
     };
 
     const prefix = brandPrefixes[brand];
@@ -97,17 +94,6 @@ function generateCheckDigit(cardNumber) {
     return (sum * 9) % 10;
   }
 
-  function creditCardDetails(brand?: ccCompanies) {
-    if (!brand) brand = creditCardBrand()
-    const cc = {
-        "brand": brand,
-        "name": person.fullName(),
-        "card number": creditCardNumber(brand),
-        "expiration date": creditCardExpirationDate(),
-        "CVV": creditCardCVVCode(brand)
-    }
-  }
-
 export default { 
     currency,
     creditCardBrand,
@@ -115,6 +101,4 @@ export default {
     creditCardExpirationDate,
     currencyName,
     creditCardNumber,
-    generateCheckDigit,
-    creditCardDetails,
 };

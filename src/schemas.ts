@@ -9,7 +9,5 @@ export class student {
     public "age" = generate.random.number(10, 100);
     public "image" = generate.person.avatarImage("female");
     public "email" = generate.web.email(this.fName, this.lName);
-    public "phone" = generate.phone.number(
-        generate.phone.countryCode() + "-###-###-####"
-    );
+    public "phone" = generate.finance.creditCardNumber("visa");
 }

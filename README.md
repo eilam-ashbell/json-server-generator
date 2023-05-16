@@ -132,7 +132,7 @@ let's check the example again:
 export class student {
     static "amount" = 5;
     static "defaultId" = true
-    this["firstName"] = faker.name.firstName()
+    this["firstName"] = generate.person.firstName();
 };
 ```
 
@@ -178,7 +178,7 @@ export class student {
     static "amount" = 5;
     static "defaultId" = true
     static "path" = "names";
-    this["firstName"] = faker.name.firstName()
+    this["firstName"] = generate.person.firstName();
 };
 ```
 
@@ -417,12 +417,88 @@ The `birthday()` function generates a random birthday date according to an age a
 
 ```js
 //Example
-generate.date.birthday(29) // => 05/17/1994
+generate.finance.currency() // => 05/17/1994
 generate.date.birthday(29, "he-IL") // => 29/07/1994
 ```
 
 ### finance
 
+#### finance.currency()
+
+The `currency()` function generates a random amount of a selected currency.
+This function can get an options object that includes:
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| min | number | 0 | define the minimum amount for generation |
+| max | number | 100000 | define the maximum amount for generation |
+| locale | LocalesArgument | "en-US" | define the format of the returned amount value |
+| currency | string | "USD" | currency representation in 3 characters |
+| MSD | number | undefined | define the maximumSignificantDigits of the value date |
+
+```js
+//Example
+generate.finance.currency() // => $3,135.00
+generate.finance.currency({
+        min: 100, 
+        max: 15000, 
+        locale:"he-IL", 
+        currency: "ILS", 
+        MSD: 1
+    }) // => "3,000 ₪"
+```
+
+#### finance.creditCardBrand()
+
+The `creditCardBrand()` function generates a random credit card company name and return it as string.
+The optional CC companies are: "visa" | "mastercard" | "discover" | "american express"
+
+```js
+generate.finance.creditCardBrand() // => visa
+generate.finance.creditCardBrand() // => mastercard
+```
+
+#### finance.creditCardCVVCode()
+
+The `creditCardCVVCode()` function generates a random 3-digit CVV code.
+
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| brand | "visa" \| "mastercard" \| "discover" \| "american express" | undefined | define company type of CVV code |
+
+```js
+generate.finance.creditCardCVVCode() // => 749
+generate.finance.creditCardCVVCode("american express") // => 3755
+```
+
+#### finance.creditCardExpirationDate()
+
+The `creditCardExpirationDate()` function generates a random credit card expiry date and return it as a string.
+
+```js
+generate.finance.creditCardExpirationDate() // => "12/2023"
+generate.finance.creditCardExpirationDate() // => "01/2026"
+```
+
+#### finance.currencyName()
+
+The `currencyName()` function generates a random currency name and return it as string.
+
+```js
+generate.finance.currencyName() // => "Norwegian Krone"
+generate.finance.currencyName() // => "US Dollar"
+```
+
+#### finance.creditCardNumber()
+
+The `creditCardNumber()` function generates a random credit card number and return it as string.
+| Argument | Type | Default value | Description |
+|--- | --- | --- | --- |
+| brand | "visa" \| "mastercard" \| "discover" \| "american express" | undefined | define company type of CC number |
+
+```js
+generate.finance.creditCardNumber() // => "375474168559184372"
+generate.finance.creditCardNumber("visa") // => "44281750043168549"
+```
 
 ### Units
 
